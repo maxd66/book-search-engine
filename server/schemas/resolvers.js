@@ -8,6 +8,9 @@ const resolvers = {
     },
     userBooks: async (parent, args) => {
       const user = User.findOne({ _id: id }).populate("savedBooks");
+      if (user.savedBooks < 1) {
+        return "User has no saved books";
+      }
       return user.savedBooks;
     },
     fetchBooks: async (parent, args) => {},
