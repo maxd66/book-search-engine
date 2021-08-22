@@ -4,7 +4,7 @@ const typeDefs = gql`
   type Book {
     authors: [String]
     description: String
-    bookId: String
+    bookId: String!
     image: String
     link: String
     title: String!
@@ -19,8 +19,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    users: [User]
+    user(userId: ID!): [User]
     fetchBooks(bookName: String!): [Book]
+    userBooks(_id: ID!): [savedBooks]
   }
 
   type Mutation {
